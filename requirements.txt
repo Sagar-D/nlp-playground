@@ -3,3 +3,5 @@ numpy
 emoji
 contractions
 pyspellchecker
+scikit-learn
+pandas
