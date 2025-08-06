@@ -1,2 +1,5 @@
 nltk
 numpy
+emoji
+contractions
+pyspellchecker
