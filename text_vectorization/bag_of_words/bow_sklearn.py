@@ -7,6 +7,7 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag
 from nltk.corpus import stopwords
+from pprint import pprint
 
 df = pd.read_csv("text_vectorization/training_data/email.csv", header=0)
 DATA_SET_SIZE = 50000
@@ -79,9 +80,20 @@ print("\n\n")
 print("--" * 30)
 print(" " * 15 + "Bag of Words Vectorization")
 print("--" * 30)
-bow_vectorizer = CountVectorizer(max_features=500)
+### Bag of Words Vectorization
+# max_features == How many max words to consider from vocabulary for vectorization
+# binary ==  if True : Create Binary vector, if False : Create a vector of a doc with word frequency consideration
+# ngram == Range(int1,int2) => combination of Words to consider in bag of words
+##.        (1,1) => Consider only individual words
+##.        (1,2) => Consider single words and combination of 2 words
+##.        (2,3) => Consider only combination of 2 words and combination of 3 words
+bow_vectorizer = CountVectorizer(max_features=100, binary=False, ngram_range=(2,3))
 X = bow_vectorizer.fit_transform(df["Message"])
 print(
     f"\nNo of Features (Words) selected :  {len(bow_vectorizer.get_feature_names_out())}"
 )
+
+print(f"\n\nVocabulary List : \n")
+pprint(bow_vectorizer.vocabulary_)
+
 print(f"\n\nFeature Vector : \n{X.toarray()}")
