@@ -87,8 +87,8 @@ print("--" * 30)
 ##.        (1,1) => Consider only individual words
 ##.        (1,2) => Consider single words and combination of 2 words
 ##.        (2,3) => Consider only combination of 2 words and combination of 3 words
-bow_vectorizer = CountVectorizer(max_features=100, binary=False, ngram_range=(2,3))
-X = bow_vectorizer.fit_transform(df["Message"])
+bow_vectorizer = CountVectorizer(max_features=500, binary=False, ngram_range=(1,3))
+X = bow_vectorizer.fit_transform(df["processed_messages"])
 print(
     f"\nNo of Features (Words) selected :  {len(bow_vectorizer.get_feature_names_out())}"
 )
