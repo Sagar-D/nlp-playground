@@ -5,3 +5,4 @@ contractions
 pyspellchecker
 scikit-learn
 pandas
+matplotlib
